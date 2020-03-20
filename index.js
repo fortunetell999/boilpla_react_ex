@@ -1,0 +1,38 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+
+const app = express();
+const port = 5000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+const { User } = require("./models/User");
+
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.mongoDB_ID}:${process.env.mongoDB_PW}@boilerplate-mmk04.mongodb.net/test?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  )
+  .then(() => {
+    console.log("--mongodb connected--");
+  })
+  .catch(err => console.log(err));
+
+app.get("/", (req, res) => res.send("Hello World!"));
+app.post("/register", (req, res) => {
+  const user = new User(req.body);
+  user.save((err, userInfo) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).json({ success: true });
+  });
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
