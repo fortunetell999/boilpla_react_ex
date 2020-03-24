@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-require("dotenv").config();
+const config = require("./config/key");
 
 const app = express();
 const port = 5000;
@@ -12,15 +12,12 @@ app.use(bodyParser.json());
 const { User } = require("./models/User");
 
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.mongoDB_ID}:${process.env.mongoDB_PW}@boilerplate-mmk04.mongodb.net/test?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-  )
+  .connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
   .then(() => {
     console.log("--mongodb connected--");
   })
