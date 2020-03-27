@@ -7,7 +7,6 @@ const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
 
 const app = express();
-const port = 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -98,4 +97,5 @@ app.get("/api/user/logout", auth, (req, res) => {
   );
 });
 
+const port = 5000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
