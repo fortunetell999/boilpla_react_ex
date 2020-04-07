@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/g1hong/boilpla_react_ex.git"
+    "url": "git+https://github.com/g1hong/bpla_rct_nd.git"
   },
   "author": "Jiwon Hong",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/g1hong/boilpla_react_ex/issues"
+    "url": "https://github.com/g1hong/bpla_rct_nd/issues"
   },
-  "homepage": "https://github.com/g1hong/boilpla_react_ex#readme",
+  "homepage": "https://github.com/g1hong/bpla_rct_nd#readme",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
